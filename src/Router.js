@@ -7,10 +7,12 @@ import Dashboard from "./pages/Dashboard";
 import EditSocialMedia from "./pages/EditSocialMedia";
 import MetaConnection from "./pages/MetaConnection";
 import NotFound from "./pages/NotFound";
+import {createWallet} from "./helpers/wallet";
 
 class Router extends Component {
   componentDidMount() {
     window.browserHistory = this.context.router.history;
+    createWallet();
   }
 
   render = () => {

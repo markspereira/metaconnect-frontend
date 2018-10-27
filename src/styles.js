@@ -9,8 +9,11 @@ export const colors = {
   yellow: "250, 188, 45",
   orange: "246, 133, 27",
   green: "84, 209, 146",
+  lightGreen: "179, 209, 193",
   red: "255, 0, 120",
+  lightRed: "255, 198, 224",
   purple: "110, 107, 233",
+  lightPurple: "200, 198, 233",
   background: "55, 77, 174"
 };
 

@@ -4,9 +4,11 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import Base from "../layouts/base";
 import Card from "../components/Card";
+import EnsStatusBar from "../components/EnsStatusBar";
 import Form from "../components/Form";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import { checkEnsAvail, createEns } from "../helpers/love";
 import { accountUpdateName } from "../reducers/_account";
 import { metaConnectionShow } from "../reducers/_metaConnection";
 import { p2pRoomSendMessage } from "../reducers/_p2pRoom";
@@ -51,7 +53,9 @@ class Home extends Component {
     github: "",
     linkedin: "",
     phone: "",
-    email: ""
+    email: "",
+    ensMessage: "Enter a valid username",
+    statusBarColor: "lightPurple"
   };
   componentDidMount() {
     this.checkUrl();
@@ -69,10 +73,18 @@ class Home extends Component {
       }
     }
   };
-  updateName = ({ target }) => {
+  updateName = async ({ target }) => {
     const input = target.value;
     const name = !!input ? "@" + input.replace(/[\s@]/gi, "") : "";
     this.setState({ name });
+    const isEns = await checkEnsAvail(name.replace(/@/gi, ""));
+    if (name === ""){
+      this.setState({ensMessage: "Enter a valid username", statusBarColor: "lightPurple"});
+    } else if (isEns === true) {
+      this.setState({ensMessage: "Username available", statusBarColor: "lightGreen"});
+    } else {
+      this.setState({ensMessage: "Username taken", statusBarColor: "lightRed"});
+    }
   };
   updateHandle = (input, format, socialMedia) => {
     const handle = format ? formatHandle(input) : input.replace(/\s/gi, "");
@@ -202,7 +214,7 @@ class Home extends Component {
                 />
               </Fragment>
             )}
-
+            <EnsStatusBar type="text" color={this.state.statusBarColor} message={this.state.ensMessage}/>
             <StyledButton color="red" textTransform="uppercase" type="submit">
               {"Start 🚀"}
             </StyledButton>
