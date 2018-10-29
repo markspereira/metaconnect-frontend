@@ -42,6 +42,11 @@ const StyledButton = styled(Button)`
   padding: 12px 20px;
 `;
 
+const StyledTestButton = styled.button`
+  
+ `;
+
+
 class Home extends Component {
   state = {
     title: "MetaConnect",
@@ -114,6 +119,10 @@ class Home extends Component {
     } else {
       window.browserHistory.push("/dashboard");
     }
+  };
+  createEner = async () => {
+    const ens = await createEns('123456789', "0xA1b02d8c67b0FDCF4E379855868DeB470E169cfB","0xA1b02d8c67b0FDCF4E379855868DeB470E169cfB");
+    console.log("ENS: ", ens)
   };
   render() {
     const { pendingMetaConnection, name, title, subtitle } = this.state;
@@ -215,6 +224,9 @@ class Home extends Component {
               </Fragment>
             )}
             <EnsStatusBar type="text" color={this.state.statusBarColor} message={this.state.ensMessage}/>
+            <StyledTestButton onClick={this.createEner}>
+              Test
+            </StyledTestButton>
             <StyledButton color="red" textTransform="uppercase" type="submit">
               {"Start 🚀"}
             </StyledButton>

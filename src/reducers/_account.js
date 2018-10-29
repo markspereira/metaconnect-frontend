@@ -1,5 +1,6 @@
 import { web3SetHttpProvider } from "../helpers/web3";
 import { updateLocal, getLocal } from "../helpers/localstorage";
+import {setObject} from "../helpers/3box";
 
 // -- Constants ------------------------------------------------------------- //
 
@@ -55,6 +56,8 @@ export const accountUpdateSocialMedia = _socialMedia => (
   const { address, name, socialMedia, metaConnections } = getState().account;
   const accountData = { address, name, socialMedia, metaConnections };
   const newAccountData = { ...accountData, socialMedia: _socialMedia };
+  console.log("updating account", _socialMedia);
+  setObject(_socialMedia);
   updateLocal(localStorageKey, newAccountData);
   dispatch({
     type: ACCOUNT_UPDATE_SOCIAL_MEDIA,
