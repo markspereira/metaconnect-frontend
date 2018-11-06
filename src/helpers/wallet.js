@@ -3,6 +3,8 @@ const Web3 = require('web3');
 const Wallet = require('ethereumjs-wallet');
 const web3 = new Web3();
 const ethutil = require('ethereumjs-util');
+const ethers = require('ethers');
+
 
 //TODO: switch to mainnet
 web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
@@ -13,14 +15,20 @@ export const provider = web3;
  */
 export const createWallet = async () => {
   const newWallet = Wallet.generate();
-  const { address } = web3.eth.accounts.privateKeyToAccount(newWallet.getPrivateKeyString().substring(2));
-  await saveLocal("account", { privateKey: newWallet.getPrivateKeyString().substring(2), publicAddress: address });
+  const privateKey = newWallet.getPrivateKeyString().substring(2);
+  let wallet = new ethers.Wallet("0x"+privateKey);
+  console.log('wallet: ', wallet);
+  const { address } = wallet;
+  await saveLocal("account", { privateKey, publicAddress: address });
+  console.log('account: ', {address, privateKey})
+  return {address, privateKey}
 };
 
 /**
  * @desc signs a message and executes a callback function with the signed message / error
  */
 export const signMsg = async (msg, cb) => {
+  console.log('MESSAGE: ', msg.params[0]);
   msg = ethutil.sha256(msg.params[0]);
   let result = {};
   try {

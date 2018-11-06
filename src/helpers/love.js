@@ -1,8 +1,8 @@
-import {checkEns, createTenzId, initSdk} from 'tenzorum';
+import {checkEns, createTenzId, initSdk, shareLove} from 'tenzorum';
 import {getLocal} from "./localstorage";
 import {provider} from "./wallet";
 
-initSdk(getLocal("account").privateKey, "0xf8894138aa4d7b54b7d49afa9d5600cdb5178721", provider, "ropsten");
+export const initLove = async () => await initSdk(getLocal("account").privateKey, "0xf8894138aa4d7b54b7d49afa9d5600cdb5178721", provider, "ropsten");
 
 export const checkEnsAvail = async name => {
   const address = await checkEns(name);
@@ -13,4 +13,10 @@ export const createEns = async username => {
   const ensName = await createTenzId(username, getLocal("account").publicAddress, getLocal("account").publicAddress);
   console.log("ENS NAME: ", ensName);
   return ensName;
+};
+
+export const loveTx = async publicAddress => {
+  const txHash = await shareLove(publicAddress, 1);
+  console.log('SHARE LOVE: ', txHash);
+  return txHash;
 };

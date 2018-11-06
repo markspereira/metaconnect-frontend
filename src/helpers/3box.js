@@ -1,74 +1,43 @@
 import {signMsg} from "./wallet";
-import {cleanHandle} from "./utilities";
-
-// const ethers = require('ethers');
+import {getLocal} from "./localstorage";
+// import {cleanHandle} from "./utilities";
 const Web3 = require('web3');
-// const ProviderBridge = require('ethers-web3-bridge');
 const Box = require('3box');
-
 let web3 = new Web3();
-let currentAccount;
-let metamask = false;
+Web3.providers.HttpProvider.prototype.sendAsync = signMsg;
+web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
+const HDWalletProvider = require("truffle-hdwallet-provider");
 
-let web3Provider;
-// web3Provider = "metamask"
-// web3Provider = "ethers"
-web3Provider = "browser";
 
-if (web3Provider === "browser") {
+export const init3box = async () => {
+  const currentAccount = getLocal("account").address;
+  const prvdr = await new HDWalletProvider(getLocal('account').privateKey, "https://ropsten.infura.io/");
+  console.log('PROVIDER: ', prvdr);
+  const box = await new Box.openBox(currentAccount, web3.currentProvider);
+  if (box) window.box = box;
+  getAccount();
+  getProfile();
 
-  Web3.providers.HttpProvider.prototype.sendAsync = signMsg;
-  web3.setProvider(new web3.providers.HttpProvider('https://mainnet.infura.io/'));
-  currentAccount = JSON.parse(localStorage.account).publicAddress;
+};
 
-} else if (web3Provider === "ethers") {
+// const print = msg => console.log("??>> : ", msg);
 
-  // let provider = ethers.providers.getDefaultProvider();
-  // let signer = new ethers.Wallet("0x"+JSON.parse(localStorage.account).privateKey);
-  // web3 = new Web3(new ProviderBridge(provider, signer));
-  // console.log('ETHERS:', ethers);
-  // console.log("ETHERS-web3: ", web3);
-  // console.log("ETHERS-signer: ", signer);
+export const createAccount = async name => {
+  const box = window.box;
+  return await box.public.set('name', name);
+};
 
-} else if (web3Provider === "metamask") {
-
-  web3 = window.web3;
-  metamask = true;
-  window.web3.eth.getAccounts(function(err, accounts) {
-    if (accounts.length !== 0) {
-      currentAccount = accounts[0];
-    } else {
-      alert("Unlock or setup your metamask")
-    }
-  });
-
-}
-
-let box;
-(async () => {
-  box = await new Box.openBox(currentAccount, web3.currentProvider);
-})();
-
-const syncComplete = sync => console.log("SYNC : ", sync);
-
-export const createAccount = async address => {
-  let name = await box.public.set('name', 'mark');
-  let metaConn = await box.private.set('metaConn', '0x123456789876543234567876543223323');
-  console.log("NAME: ", name);
-  console.log("MetaConn: ", metaConn);
-  console.log('BOX: ', box);
-  // Box.openBox(currentAccount, web3.currentProvider).then(bx => {
-  //   bx.onSyncDone(syncComplete)
-  //   box = bx;
-  //   console.log(box);
-  // });
-  return box;
+export const getProfile = async () => {
+  const profile = await Box.getProfile("0xA1b02d8c67b0FDCF4E379855868DeB470E169cfB");
+  // const profile = await box.getProfile(getLocal('account').publicAddress.substring(0,12));
+  console.log('PROFILE: ', profile)
 }
 
 export const getAccount =  async address => {
-  console.log("getting account")
+  console.log("getting account");
   // const nickname = await box.public.set('name', 'mark');
   try {
+    const box = window.box;
     console.log('the box: ', box);
     const twitter = await box.public.get('twitter');
     const telegram = await box.public.get('telegram');
@@ -87,12 +56,19 @@ export const getAccount =  async address => {
   }
 };
 
+export const set3boxItem = (key, data) => {
+  const box = window.box;
+  return box.public.set(key, data);
+};
+
 export const setObject = async object => {
+  const {box} = window;
   try {
     console.log("OBJECT: ", object);
+    console.log("BOX for: ", box);
     Object.keys(object).forEach(async key => {
       try {
-        box.public.set(key, object[key]);
+        box.public.set(key.toString(), object[key]);
         console.log(key, object[key]);
       } catch(e) {
         console.log(e)

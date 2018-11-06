@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import Wrapper from "../components/Wrapper";
+import BoxPicture from "../components/3BoxPicture";
 import Column from "../components/Column";
+import Wrapper from "../components/Wrapper";
 import Notification from "../components/Notification";
 import SocialMediaList from "../components/SocialMediaList";
 import { formatHandle } from "../helpers/utilities";
@@ -63,6 +64,7 @@ const Base = ({
   socialMedia,
   showSocialMedia,
   paddingTop,
+  image,
   ...props
 }) => (
   <StyledLayout {...props}>
@@ -70,6 +72,7 @@ const Base = ({
       <StyledContent>
         <StyledWrapper paddingTop={paddingTop} maxWidth={400}>
           <StyledProfile>
+            {name && <BoxPicture/>}
             <StyledName>{formatHandle(name)}</StyledName>
             {showSocialMedia && <SocialMediaList socialMedia={socialMedia} />}
           </StyledProfile>

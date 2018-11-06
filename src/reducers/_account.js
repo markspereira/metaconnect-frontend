@@ -96,7 +96,7 @@ export const accountClearState = () => ({ type: ACCOUNT_CLEAR_STATE });
 
 export // -- Reducer --------------------------------------------------------------- //
 const INITIAL_STATE = {
-  network: "mainnet",
+  network: "ropsten",
   provider: null,
   web3: null,
   address: getLocal(localStorageKey).address || "",

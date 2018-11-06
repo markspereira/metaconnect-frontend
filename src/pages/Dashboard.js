@@ -8,7 +8,6 @@ import Icon from "../components/Icon";
 import Column from "../components/Column";
 import QRCodeScanner from "../components/QRCodeScanner";
 import QRCodeDisplay from "../components/QRCodeDisplay";
-import BoxPicture from "../components/3BoxPicture";
 import Loader from "../components/Loader";
 import camera from "../assets/camera.svg";
 import qrcode from "../assets/qrcode.svg";
@@ -24,7 +23,6 @@ import {
   generateNewMetaConnection
 } from "../helpers/utilities";
 import { colors, transitions } from "../styles";
-import {getAccount} from "../helpers/3box";
 
 const StyledQRCodeWrapper = styled(Column)`
   position: relative;
@@ -239,7 +237,6 @@ class Dashboard extends Component {
     return (
       <Base showSocialMedia>
         <StyledContainer>
-          <BoxPicture/>
           <StyledMetaConnections>
             {Object.keys(this.props.metaConnections).length || 0}
             <span>{` ❤️`}</span>
