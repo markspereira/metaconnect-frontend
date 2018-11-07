@@ -34,7 +34,6 @@ class Router extends Component {
   };
   render = () => {
     const { name, address } = this.props;
-    console.log("ADDRESS: ", this.props);
     return (
       <Switch>
         <Route

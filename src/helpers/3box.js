@@ -6,18 +6,14 @@ const Box = require('3box');
 let web3 = new Web3();
 Web3.providers.HttpProvider.prototype.sendAsync = signMsg;
 web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
-const HDWalletProvider = require("truffle-hdwallet-provider");
 
 
 export const init3box = async () => {
   const currentAccount = getLocal("account").address;
-  const prvdr = await new HDWalletProvider(getLocal('account').privateKey, "https://ropsten.infura.io/");
-  console.log('PROVIDER: ', prvdr);
   const box = await new Box.openBox(currentAccount, web3.currentProvider);
   if (box) window.box = box;
   getAccount();
   getProfile();
-
 };
 
 // const print = msg => console.log("??>> : ", msg);
@@ -28,17 +24,20 @@ export const createAccount = async name => {
 };
 
 export const getProfile = async () => {
-  const profile = await Box.getProfile("0xA1b02d8c67b0FDCF4E379855868DeB470E169cfB");
-  // const profile = await box.getProfile(getLocal('account').publicAddress.substring(0,12));
-  console.log('PROFILE: ', profile)
-}
+  console.log('getting profile');
+  try {
+    const profile = await Box.getProfile("0x02b340DE742871fB4Ef4D0465A0D1Ac349b85dEa").then(e => console.log('PROFILE: ', e));
+    console.log('PROFILE: ', profile)
+  } catch(e) {
+    console.log('error fetching profile: ', e)
+  }
+};
 
 export const getAccount =  async address => {
   console.log("getting account");
   // const nickname = await box.public.set('name', 'mark');
   try {
     const box = window.box;
-    console.log('the box: ', box);
     const twitter = await box.public.get('twitter');
     const telegram = await box.public.get('telegram');
     const github = await box.public.get('github');
@@ -64,8 +63,6 @@ export const set3boxItem = (key, data) => {
 export const setObject = async object => {
   const {box} = window;
   try {
-    console.log("OBJECT: ", object);
-    console.log("BOX for: ", box);
     Object.keys(object).forEach(async key => {
       try {
         box.public.set(key.toString(), object[key]);

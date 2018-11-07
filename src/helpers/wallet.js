@@ -5,7 +5,6 @@ const web3 = new Web3();
 const ethutil = require('ethereumjs-util');
 const ethers = require('ethers');
 
-
 //TODO: switch to mainnet
 web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
 export const provider = web3;

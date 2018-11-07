@@ -82,14 +82,6 @@ class Home extends Component {
     const input = target.value;
     const name = !!input ? "@" + input.replace(/[\s@]/gi, "") : "";
     this.setState({ name });
-    const isEns = await checkEnsAvail(name.replace(/@/gi, ""));
-    if (name === ""){
-      this.setState({ensMessage: "Enter a valid username", statusBarColor: "lightPurple"});
-    } else if (isEns === true) {
-      this.setState({ensMessage: "Username available", statusBarColor: "lightGreen"});
-    } else {
-      this.setState({ensMessage: "Username taken", statusBarColor: "lightRed"});
-    }
   };
   updateHandle = (input, format, socialMedia) => {
     const handle = format ? formatHandle(input) : input.replace(/\s/gi, "");
@@ -120,7 +112,7 @@ class Home extends Component {
       window.browserHistory.push("/dashboard");
     }
   };
-  createEner = async () => {
+  createEnsName = async () => {
     const ens = await createEns('123456789', "0xA1b02d8c67b0FDCF4E379855868DeB470E169cfB","0xA1b02d8c67b0FDCF4E379855868DeB470E169cfB");
     console.log("ENS: ", ens)
   };
@@ -223,10 +215,10 @@ class Home extends Component {
                 />
               </Fragment>
             )}
-            <EnsStatusBar type="text" color={this.state.statusBarColor} message={this.state.ensMessage}/>
-            <StyledTestButton onClick={this.createEner}>
-              Test
-            </StyledTestButton>
+            {/*<EnsStatusBar type="text" color={this.state.statusBarColor} message={this.state.ensMessage}/>*/}
+            {/*<StyledTestButton onClick={this.createEnsName}>*/}
+              {/*Test*/}
+            {/*</StyledTestButton>*/}
             <StyledButton color="red" textTransform="uppercase" type="submit">
               {"Start 🚀"}
             </StyledButton>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import connect from "react-redux/es/connect/connect";
 import {threeBoxUpdateImage} from "../reducers/_3box";
+import {saveLocal, getLocal} from "../helpers/localstorage";
 // import { colors } from "../styles";
 
 const StyledProfilePlaceholder = styled.input`
@@ -41,10 +42,15 @@ class BoxPicture extends Component {
     this.getImage();
   };
   getImage = async () => {
-    const box = window.box;
-    const image = box ? await box.public.get('image') : null;
-    console.log('boxy: ', box);
-    box && this.setState({imgHash: image});
+    // const box = window.box;
+    // const image = box ? await box.public.get('image') : null;
+    // box && this.setState({imgHash: image});
+    const imgHash = await getLocal('boxImage');
+    console.log("IMGHASH: ", imgHash);
+    if (imgHash !== {} && imgHash !== this.state.imgHash) {
+      console.log('setting state');
+      this.setState({imgHash});
+    }
   };
   handleUpdatePic = async (photoFile) => {
     const box = window.box;
@@ -61,8 +67,9 @@ class BoxPicture extends Component {
     const returnedData = editPic && await fetch.json();
     box && await box.public.set('image', returnedData.Hash);
     console.log('returnedData: ', returnedData);
+    saveLocal('boxImage', returnedData.Hash);
     this.setState({imgHash: returnedData.Hash});
-    this.props.threeBoxUpdateImage(returnedData.Hash);
+    // this.props.threeBoxUpdateImage(returnedData.Hash);
   };
   render() {
     return (
