@@ -1,4 +1,4 @@
-import {signMsg} from "./wallet";
+// import {signMsg} from "./wallet";
 import {getLocal} from "./localstorage";
 // import {cleanHandle} from "./utilities";
 const Web3 = require('web3');

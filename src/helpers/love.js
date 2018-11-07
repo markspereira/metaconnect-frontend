@@ -1,4 +1,4 @@
-import {checkEns, createTenzId, initSdk, shareLove} from 'tenzorum';
+import { createTenzId, initSdk, shareLove} from 'tenzorum';
 import {getLocal} from "./localstorage";
 import {provider} from "./wallet";
 

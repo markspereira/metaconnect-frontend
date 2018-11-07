@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import Base from "../layouts/base";
 import Card from "../components/Card";
-import EnsStatusBar from "../components/EnsStatusBar";
+// import EnsStatusBar from "../components/EnsStatusBar";
 import Form from "../components/Form";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import { checkEnsAvail, createEns } from "../helpers/love";
+import { createEns } from "../helpers/love";
 import { accountUpdateName } from "../reducers/_account";
 import { metaConnectionShow } from "../reducers/_metaConnection";
 import { p2pRoomSendMessage } from "../reducers/_p2pRoom";
@@ -41,11 +41,6 @@ const StyledButton = styled(Button)`
   margin: 20px 0;
   padding: 12px 20px;
 `;
-
-const StyledTestButton = styled.button`
-  
- `;
-
 
 class Home extends Component {
   state = {

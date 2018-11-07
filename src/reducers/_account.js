@@ -1,6 +1,6 @@
 import { web3SetHttpProvider } from "../helpers/web3";
 import { updateLocal, getLocal } from "../helpers/localstorage";
-import {setObject} from "../helpers/3box";
+// import {setObject} from "../helpers/3box";
 
 // -- Constants ------------------------------------------------------------- //
 
