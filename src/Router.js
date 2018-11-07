@@ -10,7 +10,7 @@ import MetaConnection from "./pages/MetaConnection";
 import NotFound from "./pages/NotFound";
 import {accountUpdateAddress} from "./reducers/_account";
 import {createWallet} from "./helpers/wallet";
-import {init3box} from "./helpers/3box";
+// import {init3box} from "./helpers/3box";
 import {initLove} from "./helpers/love";
 import {getLocal} from "./helpers/localstorage";
 
@@ -22,12 +22,12 @@ class Router extends Component {
   Wallet = async () => {
     if (!getLocal('account').publicAddress) {
       const {address} = await createWallet();
-      init3box();
+      // init3box();
       initLove();
       this.props.accountUpdateAddress(address);
     } else {
       const address = getLocal('account').publicAddress;
-      init3box();
+      // init3box();
       initLove();
       this.props.accountUpdateAddress(address);
     }

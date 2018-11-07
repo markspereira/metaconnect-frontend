@@ -17,7 +17,7 @@ export const createEns = async username => {
 };
 
 export const loveTx = async publicAddress => {
-  const txHash = await shareLove(publicAddress, 0.5);
+  const txHash = await shareLove(publicAddress, 1);
   console.log('SHARE LOVE: ', txHash);
   return txHash;
 };
