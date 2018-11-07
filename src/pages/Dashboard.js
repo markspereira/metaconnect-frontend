@@ -23,6 +23,7 @@ import {
   generateNewMetaConnection
 } from "../helpers/utilities";
 import { colors, transitions } from "../styles";
+import {getLocal} from "../helpers/localstorage";
 
 const StyledQRCodeWrapper = styled(Column)`
   position: relative;
@@ -182,7 +183,9 @@ class Dashboard extends Component {
       peer: null,
       request: false,
       name: metaConnection.name,
-      socialMedia: metaConnection.socialMedia
+      socialMedia: metaConnection.socialMedia,
+      address: metaConnection.address
+
     });
   };
 
@@ -190,7 +193,8 @@ class Dashboard extends Component {
     const metaConnection = generateNewMetaConnection({
       peer: this.props.userId,
       name: this.props.name,
-      socialMedia: this.props.socialMedia
+      socialMedia: this.props.socialMedia,
+      address: this.props.address
     });
     this.sendMessage(peer, metaConnection);
   }
@@ -201,9 +205,10 @@ class Dashboard extends Component {
     const socialMedia = encodeURIComponent(
       JSON.stringify(this.props.socialMedia)
     );
+    const address = getLocal('account').publicAddress;
     let uri = "";
     if (userId) {
-      uri = `${baseUrl}?id=${userId}&name=${name}&socialMedia=${socialMedia}`;
+      uri = `${baseUrl}?id=${userId}&name=${name}&socialMedia=${socialMedia}&address=${address}`;
     }
 
     return uri;
@@ -329,6 +334,7 @@ Dashboard.propTypes = {
 const reduxProps = ({ account, p2pRoom }) => ({
   name: account.name,
   socialMedia: account.socialMedia,
+  address: account.address,
   metaConnections: account.metaConnections,
   loading: p2pRoom.loading,
   connected: p2pRoom.connected,

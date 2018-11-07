@@ -4,7 +4,7 @@ import {getLocal} from "./localstorage";
 const Web3 = require('web3');
 const Box = require('3box');
 let web3 = new Web3();
-Web3.providers.HttpProvider.prototype.sendAsync = signMsg;
+// Web3.providers.HttpProvider.prototype.sendAsync = signMsg;
 web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
 
 

@@ -46,9 +46,7 @@ class BoxPicture extends Component {
     // const image = box ? await box.public.get('image') : null;
     // box && this.setState({imgHash: image});
     const imgHash = await getLocal('boxImage');
-    console.log("IMGHASH: ", imgHash);
-    if (imgHash !== {} && imgHash !== this.state.imgHash) {
-      console.log('setting state');
+    if (imgHash.length && imgHash !== this.state.imgHash) {
       this.setState({imgHash});
     }
   };
