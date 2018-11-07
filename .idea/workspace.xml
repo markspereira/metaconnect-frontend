@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9987a6a-f451-4fd0-82fb-a7a309b38bd1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/3BoxPicture.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/3BoxPicture.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/3box.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/3box.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/love.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/love.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/utilities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/utilities.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/_metaConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/_metaConnection.js" afterDir="false" />
-    </list>
+    <list default="true" id="e9987a6a-f451-4fd0-82fb-a7a309b38bd1" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -78,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/src/helpers/3box.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="51" lean-forward="true" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
+              <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -101,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/QRCodeScanner.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
-              <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+              <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -143,7 +135,7 @@
         <entry file="file://$PROJECT_DIR$/src/helpers/love.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
-              <caret line="22" column="2" lean-forward="true" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
+              <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
               <folding>
                 <element signature="e#0#68#0" expanded="true" />
               </folding>
@@ -164,7 +156,7 @@
         <entry file="file://$PROJECT_DIR$/src/reducers/_metaConnection.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="246">
-              <caret line="41" column="18" lean-forward="true" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
+              <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
@@ -345,16 +337,15 @@
       <workItem from="1541161430005" duration="3441000" />
       <workItem from="1514764967232" duration="80000" />
       <workItem from="1541411926588" duration="14208000" />
-      <workItem from="1541503290278" duration="21785000" />
+      <workItem from="1541503290278" duration="21982000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114024000" />
+    <option name="totallyTimeSpent" value="114221000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16165951" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -695,7 +686,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/QRCodeScanner.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
-          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -719,7 +710,7 @@
     <entry file="file://$PROJECT_DIR$/src/helpers/3box.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="51" lean-forward="true" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
+          <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>
@@ -729,7 +720,7 @@
     <entry file="file://$PROJECT_DIR$/src/reducers/_metaConnection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
-          <caret line="41" column="18" lean-forward="true" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
+          <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
           </folding>
@@ -739,7 +730,7 @@
     <entry file="file://$PROJECT_DIR$/src/helpers/love.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="22" column="2" lean-forward="true" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
+          <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
           <folding>
             <element signature="e#0#68#0" expanded="true" />
           </folding>
