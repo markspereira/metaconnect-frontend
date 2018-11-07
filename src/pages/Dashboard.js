@@ -126,7 +126,7 @@ const StyledTab = styled.div`
 let baseUrl =
   !process.env.NODE_ENV || process.env.NODE_ENV === "development"
     ? "http://" + window.location.host
-    : "https://metaconnect.me";
+    : "https://metaconnect.org";
 
 class Dashboard extends Component {
   state = {
