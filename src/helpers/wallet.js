@@ -8,6 +8,8 @@ const ethers = require('ethers');
 //TODO: switch to mainnet
 web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
 export const provider = web3;
+let currentProvider = new web3.providers.HttpProvider('https://ropsten.infura.io/');
+console.log(currentProvider)
 
 /**
  * @desc create ethereum wallet and save to local storage

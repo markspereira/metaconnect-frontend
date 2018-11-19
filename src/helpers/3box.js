@@ -26,7 +26,7 @@ export const createAccount = async name => {
 export const getProfile = async () => {
   console.log('getting profile');
   try {
-    const profile = await Box.getProfile("0x02b340DE742871fB4Ef4D0465A0D1Ac349b85dEa").then(e => console.log('PROFILE: ', e));
+    const profile = await Box.getProfile("0x714a237622B91c8E758B19e7c8C173B3f6dD507c").then(e => console.log('PROFILE: ', e));
     console.log('PROFILE: ', profile)
   } catch(e) {
     console.log('error fetching profile: ', e)

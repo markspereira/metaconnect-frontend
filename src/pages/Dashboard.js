@@ -24,6 +24,7 @@ import {
 } from "../helpers/utilities";
 import { colors, transitions } from "../styles";
 import {getLocal} from "../helpers/localstorage";
+import {getProfile} from "../helpers/3box";
 
 const StyledQRCodeWrapper = styled(Column)`
   position: relative;
@@ -134,6 +135,7 @@ class Dashboard extends Component {
   };
 
   componentDidUpdate() {
+    getProfile()
     if (!this.props.loading && this.props.connected) {
       const listeners = [
         {
