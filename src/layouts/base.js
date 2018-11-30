@@ -27,6 +27,16 @@ const StyledProfile = styled.div`
   margin-bottom: 20px;
 `;
 
+const StyledIdentity = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
 const StyledName = styled.h3`
   & span {
     margin-right: 12px;
@@ -72,8 +82,10 @@ const Base = ({
       <StyledContent>
         <StyledWrapper paddingTop={paddingTop} maxWidth={400}>
           <StyledProfile>
-            {name && <BoxPicture/>}
-            <StyledName>{formatHandle(name)}</StyledName>
+            <StyledIdentity>
+              {name && <BoxPicture/>}
+              <StyledName>{formatHandle(name)}</StyledName>
+            </StyledIdentity>
             {showSocialMedia && <SocialMediaList socialMedia={socialMedia} />}
           </StyledProfile>
           {children}

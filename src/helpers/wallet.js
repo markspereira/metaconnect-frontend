@@ -11,8 +11,8 @@ web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
 export const provider = web3;
 let currentProvider = new web3.providers.HttpProvider('https://ropsten.infura.io/');
 console.log(currentProvider);
-let ethersProvider = new ethers.providers.Web3Provider(currentProvider);
-console.log(ethersProvider)
+export let ethersProvider = new ethers.providers.Web3Provider(currentProvider);
+console.log('ETHERS PROVIDER: ', ethersProvider)
 
 /**
  * @desc create ethereum wallet and save to local storage

@@ -6,6 +6,10 @@ import {threeBoxUpdateImage} from "../reducers/_3box";
 import {saveLocal, getLocal} from "../helpers/localstorage";
 // import { colors } from "../styles";
 
+const StyledContainer = styled.div`
+  margin-right: 10px;
+`
+
 const StyledProfilePlaceholder = styled.input`
   background-color: transparent;
   border-style: none;
@@ -13,8 +17,8 @@ const StyledProfilePlaceholder = styled.input`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   overflow: hidden
   opacity: 0;
   padding: 0 15px;
@@ -25,8 +29,8 @@ const StyledProfilePlaceholder = styled.input`
 `;
 
 const BackgroundImage = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 30px;
   background-color: black;
 `;
@@ -71,11 +75,11 @@ class BoxPicture extends Component {
   };
   render() {
     return (
-      <div>
+      <StyledContainer>
         <StyledProfilePlaceholder id="fileInput" type="file" name="pic" className="light" accept="image/*" onChange={e => this.handleUpdatePic(e.target.files[0])} ref={ref => this.fileUpload = ref} />
         {this.state.imgHash ? <BackgroundImage className="profPic" src={`https://ipfs.infura.io/ipfs/${this.state.imgHash}`} alt="profile" />
          : <BackgroundImage className="profPic" src={require('../assets/avatar.png')} alt="profile" />}
-      </div>
+      </StyledContainer>
     );
   }
 }

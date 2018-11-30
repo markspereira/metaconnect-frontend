@@ -1,16 +1,17 @@
-// import {signMsg} from "./wallet";
+import {ethersProvider} from "./wallet";
 import {getLocal} from "./localstorage";
 // import {cleanHandle} from "./utilities";
 const Web3 = require('web3');
 const Box = require('3box');
 let web3 = new Web3();
-// Web3.providers.HttpProvider.prototype.sendAsync = signMsg;
+Web3.providers.HttpProvider.prototype.sendAsync = ethersProvider._sendAsync;
 web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
 
 
 export const init3box = async () => {
   const currentAccount = getLocal("account").address;
   const box = await new Box.openBox(currentAccount, web3.currentProvider);
+  console.log("THE 3BOX PROFILE: ", box)
   if (box) window.box = box;
   getAccount();
   getProfile();

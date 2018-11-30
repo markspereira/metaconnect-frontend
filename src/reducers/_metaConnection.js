@@ -46,6 +46,7 @@ export const metaConnectionApprove = () => (dispatch, getState) => {
   );
   dispatch(metaConnectionHide());
 };
+
 export const metaConnectionReject = () => (dispatch, getState) => {
   const userName = getState().account.name;
   const { peer } = getState().metaConnection;
