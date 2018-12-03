@@ -39,10 +39,10 @@ export const fonts = {
   },
   family: {
     SFProText:
-      '-apple-system, system-ui, BlinkMacSystemFont, "SF Pro Text", Roboto, Helvetica, Arial, sans-serif',
-    SFMono: '"SFMono", "Roboto Mono", Courier New, Courier, monospace',
+      '"Open Sans", sans-serif',
+    SFMono: '"Open Sans", sans-serif',
     FFMarkPro:
-      '"FF Mark Pro", "Helvetica Neue", Roboto, Helvetica, Arial, sans-serif'
+      '"Archivo Black", sans-serif'
   }
 };
 

@@ -19,7 +19,7 @@ const StyledProfilePlaceholder = styled.input`
   flex-direction: column;
   width: 50px;
   height: 50px;
-  overflow: hidden
+  overflow: hidden;
   opacity: 0;
   padding: 0 15px;
   position: absolute;
@@ -33,7 +33,16 @@ const BackgroundImage = styled.img`
   height: 50px;
   border-radius: 30px;
   background-color: black;
+  background-repeat: no-repeat;
+  object-fit: cover;
 `;
+
+const AvatarImage = styled.img`
+  width: 50px;
+  object-fit: cover;
+`;
+
+
 
 class BoxPicture extends Component {
   state = {
@@ -78,7 +87,7 @@ class BoxPicture extends Component {
       <StyledContainer>
         <StyledProfilePlaceholder id="fileInput" type="file" name="pic" className="light" accept="image/*" onChange={e => this.handleUpdatePic(e.target.files[0])} ref={ref => this.fileUpload = ref} />
         {this.state.imgHash ? <BackgroundImage className="profPic" src={`https://ipfs.infura.io/ipfs/${this.state.imgHash}`} alt="profile" />
-         : <BackgroundImage className="profPic" src={require('../assets/avatar.png')} alt="profile" />}
+         : <AvatarImage className="profPic" src={require('../assets/avatar.svg')} alt="profile" />}
       </StyledContainer>
     );
   }

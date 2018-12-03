@@ -46,11 +46,6 @@ const StyledContainer = styled.div`
   margin: 10px auto;
 `;
 
-const StyledParagrah = styled.p`
-  font-size: 20px;
-  margin: 16px 0;
-`;
-
 const StyledMetaConnections = styled.div`
   display: flex;
   font-size: 52px;
@@ -79,51 +74,16 @@ const StyledMetaConnectionsEmpty = styled(StyledMetaConnectionsItem)`
   cursor: none;
 `;
 
-const StyledTabsWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 const StyledIcon = styled(Icon)``;
 
-const StyledTab = styled.div`
-  transition: ${transitions.base};
-  cursor: pointer;
-  width: 100%;
+const StyledCameraToggle = styled.div`
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70px;
-  margin: 4px;
-  border-radius: 20px;
-  border: ${({ active }) =>
-    active
-      ? `1px solid rgb(${colors.dark})`
-      : `1px solid rgb(${colors.darkGrey})`};
-
-  & ${StyledIcon} {
-    background-color: ${({ active }) =>
-      active ? `rgb(${colors.dark})` : `rgb(${colors.darkGrey})`};
-  }
-
-  & p {
-    color: ${({ active }) =>
-      active ? `rgb(${colors.dark})` : `rgb(${colors.darkGrey})`};
-  }
-
-  &:hover {
-    border: 1px solid rgba(${colors.dark}, 0.7);
-
-    & ${StyledIcon} {
-      background-color: rgba(${colors.dark}, 0.7);
-    }
-
-    & p {
-      color: rgba(${colors.dark}, 0.7);
-    }
-  }
 `;
 
 let baseUrl =
@@ -145,7 +105,8 @@ class Dashboard extends Component {
   }
   state = {
     scan: false,
-    peer: ''
+    peer: '',
+    icon: ''
   };
 
   componentDidMount() {
@@ -274,35 +235,18 @@ class Dashboard extends Component {
             {Object.keys(this.props.metaConnections).length || 0}
             <span>{` ❤️`}</span>
           </StyledMetaConnections>
-          <StyledParagrah>{`Scan to get more ❤️`}</StyledParagrah>
+            <StyledCameraToggle
+              active={this.state.scan}
+              onClick={this.toggleQRCodeScanner}>
+              <StyledIcon
+                icon={this.state.scan ? qrcode : camera}
+                size={30}
+                color={"dark"}
+                onClick={this.toggleQRCodeScanner}
+              />
+            </StyledCameraToggle>
         </StyledContainer>
         <Card>
-          <StyledTabsWrapper>
-            <StyledTab
-              active={!this.state.scan}
-              onClick={this.toggleQRCodeScanner}
-            >
-              <StyledIcon
-                icon={qrcode}
-                size={20}
-                color={"dark"}
-                onClick={this.toggleQRCodeScanner}
-              />
-              <p>QR Code</p>
-            </StyledTab>
-            <StyledTab
-              active={this.state.scan}
-              onClick={this.toggleQRCodeScanner}
-            >
-              <StyledIcon
-                icon={camera}
-                size={20}
-                color={"dark"}
-                onClick={this.toggleQRCodeScanner}
-              />
-              <p>Scan</p>
-            </StyledTab>
-          </StyledTabsWrapper>
           <StyledQRCodeWrapper>
             {this.state.scan ? (
               <QRCodeScanner

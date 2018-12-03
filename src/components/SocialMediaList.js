@@ -5,16 +5,20 @@ import Icon from "../components/Icon";
 import twitter from "../assets/twitter.svg";
 import telegram from "../assets/telegram.svg";
 import github from "../assets/github.svg";
+import addIcon from "../assets/social_add_button.svg";
 import linkedin from "../assets/linkedin.svg";
 import phone from "../assets/phone.svg";
 import email from "../assets/email.svg";
 
 const StyledSocialMediaWrapper = styled.div`
   margin: 8px 0;
+  display: flex;
+  align-items: center;
 `;
 
 const StyledSocialMedia = styled.div`
   display: flex;
+  align-items: center;
   & a > * {
     margin-left: 10px !important;
   }
@@ -23,10 +27,26 @@ const StyledSocialMedia = styled.div`
   }
 `;
 
+const StyledInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const StyledImage = styled.img`
+  width: 45px;
+  height: 45px;
+`;
+
 const SocialMediaList = ({ socialMedia, ...props }) => (
   <StyledSocialMediaWrapper {...props}>
     {!Object.keys(socialMedia).length ? (
-      <Link to="/edit-social-media">{"Add Social Media"}</Link>
+      <StyledInfo>
+        <Link to="/edit-social-media">
+          <StyledImage src={require("../assets/social_add_button.svg")} />
+        </Link>
+        <Link to="/edit-social-media">{"Add Info"}</Link>
+      </StyledInfo>
     ) : (
       <StyledSocialMedia>
         {!!socialMedia.twitter && (
@@ -35,7 +55,7 @@ const SocialMediaList = ({ socialMedia, ...props }) => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Icon icon={twitter} />
+            <Icon icon={twitter} size={30} />
           </a>
         )}
         {!!socialMedia.telegram && (
@@ -44,7 +64,7 @@ const SocialMediaList = ({ socialMedia, ...props }) => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Icon icon={telegram} />
+            <Icon icon={telegram} size={30} />
           </a>
         )}
         {!!socialMedia.github && (
@@ -53,7 +73,7 @@ const SocialMediaList = ({ socialMedia, ...props }) => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Icon icon={github} />
+            <Icon icon={github} size={30} />
           </a>
         )}
 
@@ -63,7 +83,7 @@ const SocialMediaList = ({ socialMedia, ...props }) => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Icon icon={linkedin} />
+            <Icon icon={linkedin} size={30} />
           </a>
         )}
         {!!socialMedia.email && (
@@ -72,7 +92,7 @@ const SocialMediaList = ({ socialMedia, ...props }) => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Icon icon={email} />
+            <Icon icon={email} size={30} />
           </a>
         )}
         {!!socialMedia.phone && (
@@ -81,11 +101,11 @@ const SocialMediaList = ({ socialMedia, ...props }) => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Icon icon={phone} />
+            <Icon icon={phone} size={30} />
           </a>
         )}
         <Link to="/edit-social-media">
-          <span>{"edit"}</span>
+          <StyledImage src={require("../assets/social_add_button.svg")} />
         </Link>
       </StyledSocialMedia>
     )}

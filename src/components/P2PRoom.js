@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { p2pRoomInit } from "../reducers/_p2pRoom";
 import { colors } from "../styles";
 
 const StyledMonitorWrapper = styled.div`

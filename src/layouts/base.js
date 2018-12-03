@@ -24,7 +24,6 @@ const StyledProfile = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  margin-bottom: 20px;
 `;
 
 const StyledIdentity = styled.div`
@@ -34,7 +33,6 @@ const StyledIdentity = styled.div`
   flex-direction: row;
   text-align: left;
   align-items: center;
-  margin-bottom: 20px;
 `;
 
 const StyledName = styled.h3`
@@ -84,7 +82,7 @@ const Base = ({
           <StyledProfile>
             <StyledIdentity>
               {name && <BoxPicture/>}
-              <StyledName>{formatHandle(name)}</StyledName>
+              <StyledName>{name}</StyledName>
             </StyledIdentity>
             {showSocialMedia && <SocialMediaList socialMedia={socialMedia} />}
           </StyledProfile>
