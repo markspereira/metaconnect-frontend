@@ -45,7 +45,6 @@ const StyledContent = styled(Wrapper)`
   width: 100%;
   height: 100%;
   padding: 0 16px;
-  padding-top: 60px;
   @media screen and (${responsive.sm.max}) {
     padding-top: 0;
   }
@@ -62,7 +61,6 @@ const StyledWrapper = styled(Column)`
   align-items: center;
   @media screen and (${responsive.sm.max}) {
     padding: 20px 0;
-    padding-top: 50px;
   }
 `;
 

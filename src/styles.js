@@ -42,7 +42,7 @@ export const fonts = {
       '"Open Sans", sans-serif',
     SFMono: '"Open Sans", sans-serif',
     FFMarkPro:
-      '"Archivo Black", sans-serif'
+      '"Open Sans", sans-serif'
   }
 };
 
