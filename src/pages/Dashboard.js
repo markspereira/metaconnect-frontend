@@ -15,18 +15,17 @@ import { notificationShow } from "../reducers/_notification";
 import { metaConnectionShow } from "../reducers/_metaConnection";
 import {
   p2pRoomSendMessage,
-  p2pRoomRegisterListeners
+  // p2pRoomRegisterListeners
 } from "../reducers/_p2pRoom";
 import {
   formatHandle,
   handleMetaConnectionURI,
   generateNewMetaConnection
 } from "../helpers/utilities";
-import { colors, transitions } from "../styles";
+// import { colors, transitions } from "../styles";
 import {getLocal} from "../helpers/localstorage";
 import {getProfile} from "../helpers/3box";
-
-
+import {socket} from "../helpers/socket";
 
 const StyledQRCodeWrapper = styled(Column)`
   position: relative;
@@ -90,28 +89,29 @@ let baseUrl =
   !process.env.NODE_ENV || process.env.NODE_ENV === "development"
     ? "http://" + window.location.host
     : "http://metaconnect.org";
-let socketUrl =
-  !process.env.NODE_ENV || process.env.NODE_ENV === "development"
-    ? 'http://localhost:4000'
-    : "https://relayer.tenzorum.app";
-
-const IO = require('socket.io-client');
 
 class Dashboard extends Component {
   constructor(props){
     super(props);
-
-    this.socket = IO(socketUrl)
+    console.log('THE PROPS: ', props);
+    this.socket = socket;
   }
   state = {
     scan: false,
     peer: '',
-    icon: ''
+    icon: '',
+    peerId: ''
   };
 
   componentDidMount() {
-    this.socket.on('id', id => this.setState({ peer: id }));
+    this.socket.emit('info');
+    this.socket.on('id', id => {
+      if (id) {
+        this.setState({ peer: id });
+      }
+    });
     this.socket.on('metaconnection', mtx => this.onMessage(mtx))
+    this.socket.on('approval', msg => this.onApproval(msg))
   }
 
   componentDidUpdate() {
@@ -119,47 +119,35 @@ class Dashboard extends Component {
     getProfile();
 
     if (!this.props.loading && this.props.connected) {
-      const listeners = [
-        {
-          event: "message",
-          callback: this.onMessage
-        }
-      ];
     }
   }
 
   sendMessage = (peer, message) => {
+    message.id = peer;
     this.socket.emit('metaconnection', message);
-    message = JSON.stringify(message);
-    // this.props.p2pRoomSendMessage(peer, message);
+  };
+
+  onApproval = msg => {
+      if (msg) {
+        let result = JSON.parse(msg);
+        if (result.request) {
+          this.openNewMetaConnection(result);
+        } else if (result.approved) {
+          this.props.notificationShow(
+            `${formatHandle(result.name)} has approved your MetaConnection!`
+          );
+        } else if (result.rejected) {
+          this.props.notificationShow(
+            `${formatHandle(result.name)} has rejected your MetaConnection!`,
+            true
+          );
+        }
+      }
   };
 
   onMessage = message => {
-    console.log('message: ', message);
+    this.setState({peerId: message.id});
     this.openNewMetaConnection(message);
-    // let msgString = message.toString();
-    // if (msgString.trim()) {
-    //   let result = null;
-    //   try {
-    //     result = JSON.parse(msgString);
-    //   } catch (err) {
-    //     throw new Error(err);
-    //   }
-    //   if (result) {
-    //     if (result.request) {
-    //       this.openNewMetaConnection(result);
-    //     } else if (result.approved) {
-    //       this.props.notificationShow(
-    //         `${formatHandle(result.name)} has approved your MetaConnection!`
-    //       );
-    //     } else if (result.rejected) {
-    //       this.props.notificationShow(
-    //         `${formatHandle(result.name)} has rejected your MetaConnection!`,
-    //         true
-    //       );
-    //     }
-    //   }
-    // }
   };
 
   openNewMetaConnection = metaConnection =>
@@ -183,7 +171,7 @@ class Dashboard extends Component {
       socialMedia: this.props.socialMedia,
       address: this.props.address,
     });
-    this.sendMessage(peer, metaConnection);
+    this.sendMessage(this.socket.id, metaConnection);
   }
 
   generateQRCodeURI = () => {
@@ -220,6 +208,8 @@ class Dashboard extends Component {
   onQRCodeScan = string => {
     const result = handleMetaConnectionURI(string);
     if (result) {
+      result.id = result.peer;
+      this.setState({peerId: result.peer});
       this.toggleQRCodeScanner();
       this.sendMetaConnection(result.peer);
       this.openNewMetaConnection(result);
@@ -227,7 +217,6 @@ class Dashboard extends Component {
   };
 
   render() {
-    console.log("SOCKET ID: ", this.state.peer);
     return (
       <Base showSocialMedia>
         <StyledContainer>

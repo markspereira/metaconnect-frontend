@@ -13,6 +13,7 @@ const METACONNECTION_HIDE = "metaConnection/METACONNECTION_HIDE";
 const localStorageKey = "METACONNECTIONS";
 
 export const metaConnectionShow = ({
+  id,
   peer,
   request,
   name,
@@ -21,7 +22,7 @@ export const metaConnectionShow = ({
 }) => dispatch => {
   dispatch({
     type: METACONNECTION_SHOW,
-    payload: { peer, request, name, socialMedia, address }
+    payload: { id, peer, request, name, socialMedia, address }
   });
   window.browserHistory.push("/meta-connection");
 };
@@ -33,14 +34,13 @@ export const metaConnectionHide = () => dispatch => {
 
 export const metaConnectionApprove = () => (dispatch, getState) => {
   const userName = getState().account.name;
-  const { peer, name, socialMedia, address } = getState().metaConnection;
-  console.log('METACONNECTION: ', getState().metaConnection);
+  const { id, peer, name, socialMedia, address } = getState().metaConnection;
   const newMetaConnection = { [name]: { name, socialMedia, address } };
   updateLocal(localStorageKey, newMetaConnection);
   const { metaConnections } = getState().account;
   const response = { name: userName, approved: true, rejected: false };
   loveTx(address);
-  dispatch(p2pRoomSendMessage(peer, response));
+  dispatch(p2pRoomSendMessage(id, response));
   dispatch(
     accountUpdateMetaConnections({ ...metaConnections, ...newMetaConnection })
   );
@@ -48,6 +48,7 @@ export const metaConnectionApprove = () => (dispatch, getState) => {
 };
 
 export const metaConnectionReject = () => (dispatch, getState) => {
+  console.log('rejected::')
   const userName = getState().account.name;
   const { peer } = getState().metaConnection;
   const response = { name: userName, approved: false, rejected: true };
@@ -69,6 +70,7 @@ export default (state = INITIAL_STATE, action) => {
     case METACONNECTION_SHOW:
       return {
         ...state,
+        id: action.payload.id,
         peer: action.payload.peer,
         request: action.payload.request,
         name: action.payload.name,

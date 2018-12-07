@@ -197,7 +197,6 @@ export function handleMetaConnectionURI(string) {
   const queryString =
     typeof pathEnd !== "undefined" ? string.substring(pathEnd) : "";
   let queryParams = parseQueryParams(queryString);
-  console.log('QUERY PARAMS: ', queryParams);
   if (Object.keys(queryParams).length) {
     const peer = queryParams.id;
     const name = decodeURIComponent(queryParams.name);

@@ -1,5 +1,5 @@
-/* global Ipfs PubSubRoom */
-
+// /* global Ipfs PubSubRoom */
+import {socket} from '../helpers/socket';
 // -- Constants ------------------------------------------------------------- //
 const P2PROOM_INIT_REQUEST = "p2pRoom/P2PROOM_INIT_REQUEST";
 const P2PROOM_INIT_SUCCESS = "p2pRoom/P2PROOM_INIT_SUCCESS";
@@ -24,6 +24,7 @@ export const p2pRoomSendMessage = (peer, message) => (dispatch, getState) => {
       throw new Error("Message invalid format");
     }
   }
+  socket.emit('approval', {peer, message});
   dispatch({type: P2PROOM_MESSAGE, payload: peer, message});
 };
 

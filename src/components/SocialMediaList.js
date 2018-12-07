@@ -5,7 +5,6 @@ import Icon from "../components/Icon";
 import twitter from "../assets/twitter.svg";
 import telegram from "../assets/telegram.svg";
 import github from "../assets/github.svg";
-import addIcon from "../assets/social_add_button.svg";
 import linkedin from "../assets/linkedin.svg";
 import phone from "../assets/phone.svg";
 import email from "../assets/email.svg";

@@ -7,7 +7,7 @@ import Column from "../components/Column";
 import Wrapper from "../components/Wrapper";
 import Notification from "../components/Notification";
 import SocialMediaList from "../components/SocialMediaList";
-import { formatHandle } from "../helpers/utilities";
+// import { formatHandle } from "../helpers/utilities";
 import { responsive } from "../styles";
 
 const StyledLayout = styled.div`

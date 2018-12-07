@@ -77,6 +77,5 @@ const reduxProps = ({ p2pRoom }) => ({
 export default connect(
   reduxProps,
   {
-    p2pRoomInit
   }
 )(P2PRoom);
