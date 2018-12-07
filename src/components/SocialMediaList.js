@@ -32,9 +32,15 @@ const StyledInfo = styled.div`
   align-items: center;
 `;
 
+const StyledText = styled.h6`
+  weight: 700;
+`
+
 const StyledImage = styled.img`
-  width: 45px;
-  height: 45px;
+  width: 27px;
+  height: 27px;
+  margin-bottom: -4px;
+  margin-right: 5px;
 `;
 
 const SocialMediaList = ({ socialMedia, ...props }) => (
@@ -42,9 +48,9 @@ const SocialMediaList = ({ socialMedia, ...props }) => (
     {!Object.keys(socialMedia).length ? (
       <StyledInfo>
         <Link to="/edit-social-media">
-          <StyledImage src={require("../assets/social_add_button.svg")} />
+          <StyledImage src={require("../assets/social_add_transparent.svg")} />
         </Link>
-        <Link to="/edit-social-media">{"Add Info"}</Link>
+        <Link to="/edit-social-media"><StyledText>Add Info</StyledText></Link>
       </StyledInfo>
     ) : (
       <StyledSocialMedia>
@@ -104,8 +110,9 @@ const SocialMediaList = ({ socialMedia, ...props }) => (
           </a>
         )}
         <Link to="/edit-social-media">
-          <StyledImage src={require("../assets/social_add_button.svg")} />
+          <StyledImage src={require("../assets/social_add_transparent.svg")} />
         </Link>
+        <Link to="/edit-social-media"><StyledText>Add Info</StyledText></Link>
       </StyledSocialMedia>
     )}
   </StyledSocialMediaWrapper>

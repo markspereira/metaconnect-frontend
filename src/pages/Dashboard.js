@@ -37,6 +37,12 @@ const StyledQRCodeWrapper = styled(Column)`
   min-height: 360px;
 `;
 
+const StyledText = styled.h4`
+  margin-top: 12px;
+  margin-bottom: -10px;
+  weight: 700;
+`
+
 const StyledContainer = styled.div`
   width: 100%;
   display: flex;
@@ -79,6 +85,7 @@ const StyledCameraToggle = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: white;
   display: flex;
   align-items: center;
@@ -134,12 +141,15 @@ class Dashboard extends Component {
           this.openNewMetaConnection(result);
         } else if (result.approved) {
           this.props.notificationShow(
-            `🎉${formatHandle(result.name)} approved your MetaConnection!🎉`
+            `🎉${formatHandle(result.name)} approved your MetaConnection!🎉`,
+            false,
+            result.name
           );
         } else if (result.rejected) {
           this.props.notificationShow(
             `${formatHandle(result.name)} rejected your MetaConnection!💔`,
-            true
+            true,
+            result.name
           );
         }
       }
@@ -236,7 +246,9 @@ class Dashboard extends Component {
             </StyledCameraToggle>
         </StyledContainer>
         <Card>
+
           <StyledQRCodeWrapper>
+            <StyledText>Scan to connect!</StyledText>
             {this.state.scan ? (
               <QRCodeScanner
                 onValidate={this.onQRCodeValidate}
@@ -244,10 +256,10 @@ class Dashboard extends Component {
                 onScan={this.onQRCodeScan}
                 onClose={this.toggleQRCodeScanner}
               />
-            ) : !this.props.loading ? (
+            ) : this.state.peer ? (
               <QRCodeDisplay data={this.generateQRCodeURI()} />
             ) : (
-              <Loader color="dark" background="white" />
+              <Loader size={320} color="dark" background="white" />
             )}
           </StyledQRCodeWrapper>
         </Card>

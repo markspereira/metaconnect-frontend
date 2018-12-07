@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="106px" height="106px" viewBox="0 0 106 106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>social add</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-5421.000000, -2811.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="social-add" transform="translate(5421.000000, 2811.000000)">
+                <path d="M60,46.5 L60,25.5 C60,21.9101491 57.0898509,19 53.5,19 C49.9101491,19 47,21.9101491 47,25.5 L47,46.5 L26,46.5 C22.4101491,46.5 19.5,49.4101491 19.5,53 C19.5,56.5898509 22.4101491,59.5 26,59.5 L47,59.5 L47,80.5 C47,84.0898509 49.9101491,87 53.5,87 C57.0898509,87 60,84.0898509 60,80.5 L60,59.5 L81,59.5 C84.5898509,59.5 87.5,56.5898509 87.5,53 C87.5,49.4101491 84.5898509,46.5 81,46.5 L60,46.5 Z M53,106 C23.7289083,106 0,82.2710917 0,53 C0,23.7289083 23.7289083,0 53,0 C82.2710917,0 106,23.7289083 106,53 C106,82.2710917 82.2710917,106 53,106 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

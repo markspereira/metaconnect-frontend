@@ -5,9 +5,9 @@ const NOTIFICATION_HIDE = "notification/NOTIFICATION_HIDE";
 // -- Actions --------------------------------------------------------------- //
 let timeoutHide;
 
-export const notificationShow = (message, error = false) => dispatch => {
+export const notificationShow = (message, error = false, name) => dispatch => {
   clearTimeout(timeoutHide);
-  dispatch({ type: NOTIFICATION_SHOW, payload: { message, error } });
+  dispatch({ type: NOTIFICATION_SHOW, payload: { message, error, name } });
   timeoutHide = setTimeout(() => dispatch({ type: NOTIFICATION_HIDE }), 5000);
 };
 
@@ -25,6 +25,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         show: true,
         message: action.payload.message,
+        name: action.payload.name,
         error: action.payload.error
       };
     case NOTIFICATION_HIDE:

@@ -40,10 +40,10 @@ const StyledNotification = styled.div`
   }
 `;
 
-const Notification = ({ show, error, message, button, ...props }) => (
+const Notification = ({ show, error, message, name, button, ...props }) => (
   <StyledNotification show={show} error={error} {...props}>
     {message}
-    {!error && <StyledButton color="red" textTransform="uppercase" type="submit" onClick={() => window.open('http://twitter.com/share?text=🎉I just metaconnected! Throw away your business card and start metaconnecting now! 👉 &url=https://metaconnect.org/&hashtags=digitalidentity,savetheplanet&')}>
+    {!error && <StyledButton color="red" textTransform="uppercase" type="submit" onClick={() => window.open(`http://twitter.com/share?text=🎉I just metaconnected with @${name}! Throw away your business card and start metaconnecting now! 👉 &url=https://metaconnect.org/&hashtags=digitalidentity,savetheplanet&`)}>
       Share on Twitter <span role="img">🐦</span>
     </StyledButton>}
   </StyledNotification>
@@ -52,13 +52,14 @@ const Notification = ({ show, error, message, button, ...props }) => (
 Notification.propTypes = {
   show: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
-  message: PropTypes.string.isRequired
+  message: PropTypes.string.isRequired,
 };
 
 const reduxProps = ({ notification }) => ({
   error: notification.error,
   show: notification.show,
-  message: notification.message
+  message: notification.message,
+  name: notification.name,
 });
 
 export default connect(

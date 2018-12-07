@@ -11,6 +11,13 @@ const load = keyframes`
     transform: rotate(360deg);
   }
 `;
+const StyledContainer = styled.div`
+  height: ${({ size }) => `${size}px`};
+  width: ${({ size }) => `${size}px`};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const StyledLoader = styled.div`
   position: relative;
@@ -55,7 +62,9 @@ const StyledLoader = styled.div`
 `;
 
 const Loader = ({ size, color, background, ...props }) => (
-  <StyledLoader size={size} color={color} background={background} {...props} />
+  <StyledContainer size={size}>
+    <StyledLoader size={50} color={color} background={background} {...props} />
+  </StyledContainer>
 );
 
 Loader.propTypes = {

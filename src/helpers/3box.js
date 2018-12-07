@@ -9,6 +9,7 @@ web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
 
 
 export const init3box = async () => {
+  console.log('initializing 3box...')
   const currentAccount = getLocal("account").address;
   const box = await new Box.openBox(currentAccount, web3.currentProvider);
   console.log("THE 3BOX PROFILE: ", box)
