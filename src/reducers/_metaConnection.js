@@ -34,7 +34,7 @@ export const metaConnectionHide = () => dispatch => {
 
 export const metaConnectionApprove = () => (dispatch, getState) => {
   const userName = getState().account.name;
-  const { id, peer, name, socialMedia, address } = getState().metaConnection;
+  const { id, name, socialMedia, address } = getState().metaConnection;
   const newMetaConnection = { [name]: { name, socialMedia, address } };
   updateLocal(localStorageKey, newMetaConnection);
   const { metaConnections } = getState().account;
@@ -48,7 +48,6 @@ export const metaConnectionApprove = () => (dispatch, getState) => {
 };
 
 export const metaConnectionReject = () => (dispatch, getState) => {
-  console.log('rejected::')
   const userName = getState().account.name;
   const { peer } = getState().metaConnection;
   const response = { name: userName, approved: false, rejected: true };

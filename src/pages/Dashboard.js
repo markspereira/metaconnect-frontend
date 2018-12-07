@@ -134,11 +134,11 @@ class Dashboard extends Component {
           this.openNewMetaConnection(result);
         } else if (result.approved) {
           this.props.notificationShow(
-            `${formatHandle(result.name)} has approved your MetaConnection!`
+            `🎉${formatHandle(result.name)} approved your MetaConnection!🎉`
           );
         } else if (result.rejected) {
           this.props.notificationShow(
-            `${formatHandle(result.name)} has rejected your MetaConnection!`,
+            `${formatHandle(result.name)} rejected your MetaConnection!💔`,
             true
           );
         }

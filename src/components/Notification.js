@@ -3,6 +3,15 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { colors, shadows, responsive, transitions } from "../styles";
+import Button from '../components/Button';
+
+const StyledButton = styled(Button)`
+  width: 100%;
+  height: auto;
+  margin: 20px 0;
+  padding: 12px 20px;
+`;
+
 
 const StyledNotification = styled.div`
   position: fixed;
@@ -31,9 +40,12 @@ const StyledNotification = styled.div`
   }
 `;
 
-const Notification = ({ show, error, message, ...props }) => (
+const Notification = ({ show, error, message, button, ...props }) => (
   <StyledNotification show={show} error={error} {...props}>
     {message}
+    {!error && <StyledButton color="red" textTransform="uppercase" type="submit" onClick={() => window.open('http://twitter.com/share?text=🎉I just metaconnected! Throw away your business card and start metaconnecting now! 👉 &url=https://metaconnect.org/&hashtags=digitalidentity,savetheplanet&')}>
+      Share on Twitter <span role="img">🐦</span>
+    </StyledButton>}
   </StyledNotification>
 );
 
