@@ -164,7 +164,7 @@ export function parseQueryParams(queryString) {
  * @param  {Object}  {name}
  * @return {Object}
  */
-export function generateNewMetaConnection({ peer, name, socialMedia, address }) {
+export function generateNewMetaConnection({ peer, name, socialMedia, address, boxImage }) {
   if (!peer || typeof peer !== "string") {
     throw new Error("ERROR: MetaConnection peer is missing or invalid");
   }
@@ -183,6 +183,7 @@ export function generateNewMetaConnection({ peer, name, socialMedia, address }) 
     name: name,
     socialMedia: socialMedia,
     address: address,
+    boxImage: boxImage,
   };
 }
 
@@ -202,7 +203,8 @@ export function handleMetaConnectionURI(string) {
     const name = decodeURIComponent(queryParams.name);
     const address = decodeURIComponent(queryParams.address);
     const socialMedia = JSON.parse(decodeURIComponent(queryParams.socialMedia));
-    result = generateNewMetaConnection({ peer, name, socialMedia, address });
+    const boxImage = queryParams.boxImage;
+    result = generateNewMetaConnection({ peer, name, socialMedia, address, boxImage });
   }
   return result;
 }

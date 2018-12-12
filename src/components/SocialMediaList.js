@@ -34,7 +34,7 @@ const StyledInfo = styled.div`
 
 const StyledText = styled.h6`
   weight: 700;
-`
+`;
 
 const StyledImage = styled.img`
   width: 27px;

@@ -14,7 +14,8 @@ export const colors = {
   lightRed: "255, 198, 224",
   purple: "110, 107, 233",
   lightPurple: "200, 198, 233",
-  background: "55, 77, 174"
+  background: "55, 77, 174",
+  twitterBlue: "29 161 242"
 };
 
 export const fonts = {

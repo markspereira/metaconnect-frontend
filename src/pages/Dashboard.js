@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Base from "../layouts/base";
+import Button from "../components/Button";
+import BoxPicture from "../components/3BoxPicture";
 import Card from "../components/Card";
 import Icon from "../components/Icon";
 import Column from "../components/Column";
@@ -51,6 +53,14 @@ const StyledContainer = styled.div`
   margin: 10px auto;
 `;
 
+const StyledButton = styled(Button)`
+  
+`;
+
+const StyledAvatar = styled(BoxPicture)`
+  marginRight: 10px;
+`;
+
 const StyledMetaConnections = styled.div`
   display: flex;
   font-size: 52px;
@@ -61,18 +71,29 @@ const StyledMetaConnections = styled.div`
   }
 `;
 
+const StyledMiniProfile = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
 const StyledMetaConnectionsListWrapper = styled.div`
   width: 100%;
   margin: 20px auto;
 `;
 
 const StyledMetaConnectionsList = styled.div``;
-
 const StyledMetaConnectionsItem = styled.div`
-  margin: 10px auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin:  10px auto;
   text-align: left;
   cursor: pointer;
-  padding: 0 8px;
+  padding: 0px 8px 10px 0 ;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+
 `;
 
 const StyledMetaConnectionsEmpty = styled(StyledMetaConnectionsItem)`
@@ -100,7 +121,6 @@ let baseUrl =
 class Dashboard extends Component {
   constructor(props){
     super(props);
-    console.log('THE PROPS: ', props);
     this.socket = socket;
   }
   state = {
@@ -164,22 +184,25 @@ class Dashboard extends Component {
     this.props.metaConnectionShow(metaConnection);
 
   openExistingMetaConnection = metaConnection => {
+    console.log('metaconnection: ', metaConnection)
     this.props.metaConnectionShow({
       peer: null,
       request: false,
       name: metaConnection.name,
       socialMedia: metaConnection.socialMedia,
-      address: metaConnection.address
-
+      address: metaConnection.address,
+      boxImage: metaConnection.boxImage,
     });
   };
 
   sendMetaConnection(peer) {
+    const boxImage = getLocal('boxImage');
     const metaConnection = generateNewMetaConnection({
       peer: peer,
       name: this.props.name,
       socialMedia: this.props.socialMedia,
       address: this.props.address,
+      boxImage
     });
     this.sendMessage(this.socket.id, metaConnection);
   }
@@ -191,9 +214,10 @@ class Dashboard extends Component {
       JSON.stringify(this.props.socialMedia)
     );
     const address = getLocal('account').publicAddress;
+    const boxImage = getLocal('boxImage');
     let uri = "";
     if (peer) {
-      uri = `${baseUrl}?id=${peer}&name=${name}&socialMedia=${socialMedia}&address=${address}`;
+      uri = `${baseUrl}?id=${peer}&name=${name}&socialMedia=${socialMedia}&address=${address}&boxImage=${boxImage}`;
     }
 
     return uri;
@@ -246,7 +270,6 @@ class Dashboard extends Component {
             </StyledCameraToggle>
         </StyledContainer>
         <Card>
-
           <StyledQRCodeWrapper>
             <StyledText>Scan to connect!</StyledText>
             {this.state.scan ? (
@@ -276,7 +299,13 @@ class Dashboard extends Component {
                     )
                   }
                 >
-                  {formatHandle(key)}
+                  <StyledMiniProfile>
+                    <StyledAvatar size={30} metaconnection imgHash={this.props.metaConnections[key].boxImage}/>
+                    <h6>
+                      {key}
+                    </h6>
+                  </StyledMiniProfile>
+                  <StyledButton>View</StyledButton>
                 </StyledMetaConnectionsItem>
               ))}
             </StyledMetaConnectionsList>

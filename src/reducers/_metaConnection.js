@@ -18,11 +18,12 @@ export const metaConnectionShow = ({
   request,
   name,
   socialMedia,
-  address
+  address,
+  boxImage
 }) => dispatch => {
   dispatch({
     type: METACONNECTION_SHOW,
-    payload: { id, peer, request, name, socialMedia, address }
+    payload: { id, peer, request, name, socialMedia, address, boxImage }
   });
   window.browserHistory.push("/meta-connection");
 };
@@ -34,8 +35,9 @@ export const metaConnectionHide = () => dispatch => {
 
 export const metaConnectionApprove = () => (dispatch, getState) => {
   const userName = getState().account.name;
-  const { id, name, socialMedia, address } = getState().metaConnection;
-  const newMetaConnection = { [name]: { name, socialMedia, address } };
+  const { id, name, socialMedia, address, boxImage } = getState().metaConnection;
+  console.log('boxImage preservation probe: ', boxImage);
+  const newMetaConnection = { [name]: { name, socialMedia, address, boxImage } };
   updateLocal(localStorageKey, newMetaConnection);
   const { metaConnections } = getState().account;
   const response = { name: userName, approved: true, rejected: false };
@@ -74,7 +76,8 @@ export default (state = INITIAL_STATE, action) => {
         request: action.payload.request,
         name: action.payload.name,
         socialMedia: action.payload.socialMedia,
-        address: action.payload.address
+        address: action.payload.address,
+        boxImage: action.payload.boxImage
       };
     case METACONNECTION_HIDE:
       return { ...state, ...INITIAL_STATE };

@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "3box": "^1.0.3",
+    "3box": "^1.0.6",
     "axios": "^0.18.0",
     "bignumber.js": "^7.2.1",
+    "ethereumjs-util": "^6.0.0",
     "ethereumjs-wallet": "^0.6.2",
     "ethers": "^4.0.7",
     "ipfs": "^0.32.3",

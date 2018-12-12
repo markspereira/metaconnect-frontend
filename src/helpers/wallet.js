@@ -36,6 +36,7 @@ export const signMsg = async (msg, cb) => {
   msg = ethutil.sha256(msg.params[0]);
   let result = {};
   try {
+    console.log('le privkey: ', JSON.parse(localStorage.account).privateKey);
     const sig = ethutil.ecsign(msg, new Buffer(JSON.parse(localStorage.account).privateKey, 'hex'));
     result.result = sig.s;
   } catch(e) {

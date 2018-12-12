@@ -1,16 +1,20 @@
 import {ethersProvider} from "./wallet";
 import {getLocal} from "./localstorage";
+// const ethers = require('ethers');
 // import {cleanHandle} from "./utilities";
+// import {signMsg} from "./wallet";
+
 const Web3 = require('web3');
 const Box = require('3box');
 let web3 = new Web3();
-Web3.providers.HttpProvider.prototype.sendAsync = ethersProvider._sendAsync;
+// Web3.providers.HttpProvider.prototype.sendAsync = signMsg;
 web3.setProvider(new web3.providers.HttpProvider('https://ropsten.infura.io/'));
 
+// let wallet = new ethers.Wallet(getLocal('account').privateKey);
 
 export const init3box = async () => {
-  console.log('initializing 3box...')
-  const currentAccount = getLocal("account").address;
+  console.log('initializing 3box...', ethersProvider);
+  const currentAccount = await getLocal("account").publicAddress;
   const box = await new Box.openBox(currentAccount, web3.currentProvider);
   console.log("THE 3BOX PROFILE: ", box)
   if (box) window.box = box;
@@ -28,7 +32,8 @@ export const createAccount = async name => {
 export const getProfile = async () => {
   console.log('getting profile');
   try {
-    const profile = await Box.getProfile("0x714a237622B91c8E758B19e7c8C173B3f6dD507c").then(e => console.log('PROFILE: ', e));
+    const currentAccount = await getLocal("account").publicAddress;
+    const profile = await Box.getProfile(currentAccount).then(e => console.log('PROFILE: ', e));
     console.log('PROFILE: ', profile)
   } catch(e) {
     console.log('error fetching profile: ', e)

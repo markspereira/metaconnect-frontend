@@ -17,20 +17,20 @@ const StyledProfilePlaceholder = styled.input`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 50px;
-  height: 50px;
+  width: ${props => `${props.size}px`};
+  height: ${props => `${props.size}px`};
   overflow: hidden;
   opacity: 0;
   padding: 0 15px;
   position: absolute;
-  resize-mode: contain;
+  reprops.size-mode: contain;
   text-align: center;
   -webkit-box-sizing: border-box;
 `;
 
 const BackgroundImage = styled.img`
-  width: 50px;
-  height: 50px;
+  width: ${props => `${props.size}px`};
+  height: ${props => `${props.size}px`};
   border-radius: 30px;
   background-color: black;
   background-repeat: no-repeat;
@@ -38,7 +38,7 @@ const BackgroundImage = styled.img`
 `;
 
 const AvatarImage = styled.img`
-  width: 50px;
+  width: ${props => `${props.size}px`};
   object-fit: cover;
 `;
 
@@ -58,10 +58,15 @@ class BoxPicture extends Component {
     // const box = window.box;
     // const image = box ? await box.public.get('image') : null;
     // box && this.setState({imgHash: image});
-    const imgHash = await getLocal('boxImage');
-    if (imgHash.length && imgHash !== this.state.imgHash) {
-      this.setState({imgHash});
+    if (this.props.metaconnection) {
+      this.setState({imgHash: this.props.imgHash})
+    } else {
+      const imgHash = await getLocal('boxImage');
+      if (imgHash.length && imgHash !== this.state.imgHash) {
+        this.setState({imgHash});
+      }
     }
+
   };
   handleUpdatePic = async (photoFile) => {
     const box = window.box;
@@ -83,11 +88,12 @@ class BoxPicture extends Component {
     // this.props.threeBoxUpdateImage(returnedData.Hash);
   };
   render() {
+    console.log('SIZE OF PROP: ', this.props.imgHash)
     return (
       <StyledContainer>
-        <StyledProfilePlaceholder id="fileInput" type="file" name="pic" className="light" accept="image/*" onChange={e => this.handleUpdatePic(e.target.files[0])} ref={ref => this.fileUpload = ref} />
-        {this.state.imgHash ? <BackgroundImage className="profPic" src={`https://ipfs.infura.io/ipfs/${this.state.imgHash}`} alt="profile" />
-         : <AvatarImage className="profPic" src={require('../assets/avatar.svg')} alt="profile" />}
+        <StyledProfilePlaceholder size={this.props.size || 50} id="fileInput" type="file" name="pic" className="light" accept="image/*" onChange={e => this.handleUpdatePic(e.target.files[0])} ref={ref => this.fileUpload = ref} />
+        {this.state.imgHash ? <BackgroundImage size={this.props.size || 50} className="profPic" src={`https://ipfs.infura.io/ipfs/${this.state.imgHash}`} alt="profile" />
+         : <AvatarImage size={this.props.size || 50} className="profPic" src={require('../assets/avatar.svg')} alt="profile" />}
       </StyledContainer>
     );
   }

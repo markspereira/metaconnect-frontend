@@ -69,6 +69,7 @@ export const accountUpdateMetaConnections = _metaConnections => (
   getState
 ) => {
   if (!_metaConnections) return;
+  console.log('account for metaconnection: ', getState().account);
   const { address, name, socialMedia, metaConnections } = getState().account;
   const accountData = { address, name, socialMedia, metaConnections };
   const newAccountData = { ...accountData, metaConnections: _metaConnections };
@@ -101,7 +102,8 @@ const INITIAL_STATE = {
   address: getLocal(localStorageKey).address || "",
   name: getLocal(localStorageKey).name || "",
   metaConnections: getLocal("METACONNECTIONS") || {},
-  socialMedia: getLocal(localStorageKey).socialMedia || {}
+  socialMedia: getLocal(localStorageKey).socialMedia || {},
+  boxImage: getLocal('boxImage') || ""
 };
 
 export default (state = INITIAL_STATE, action) => {

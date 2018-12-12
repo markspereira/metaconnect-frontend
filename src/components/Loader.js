@@ -11,6 +11,7 @@ const load = keyframes`
     transform: rotate(360deg);
   }
 `;
+
 const StyledContainer = styled.div`
   height: ${({ size }) => `${size}px`};
   width: ${({ size }) => `${size}px`};

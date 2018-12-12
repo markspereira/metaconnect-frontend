@@ -60,7 +60,8 @@ class EditSocialMedia extends Component {
   };
   onClose = () => window.browserHistory.push("/dashboard");
   render = () => {
-    const { request, name, socialMedia } = this.props;
+    console.log('METACONNECTION PROPS: ', this.props);
+    const { request, name, socialMedia, boxImage } = this.props;
     return (
       <Base>
         <StyledSubtitle>
@@ -68,8 +69,7 @@ class EditSocialMedia extends Component {
             ? "You have a new MetaConnection! 🎉"
             : "Check out your MetaConnection ❤️"}
         </StyledSubtitle>
-
-        <SocialMediaCard name={name} socialMedia={socialMedia} />
+        <SocialMediaCard name={name} socialMedia={socialMedia} imageHash={boxImage} />
 
         {request ? (
           <StyledActions>
@@ -113,7 +113,8 @@ EditSocialMedia.propTypes = {
 const reduxProps = ({ metaConnection }) => ({
   request: metaConnection.request,
   name: metaConnection.name,
-  socialMedia: metaConnection.socialMedia
+  socialMedia: metaConnection.socialMedia,
+  boxImage: metaConnection.boxImage,
 });
 
 export default connect(
