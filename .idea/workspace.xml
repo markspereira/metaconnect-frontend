@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9987a6a-f451-4fd0-82fb-a7a309b38bd1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/3BoxPicture.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/3BoxPicture.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Notification.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Notification.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SocialMediaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SocialMediaCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SocialMediaList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SocialMediaList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/3box.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/3box.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/utilities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/utilities.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/wallet.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/wallet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MetaConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MetaConnection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/_account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/_account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/_metaConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/_metaConnection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.js" afterDir="false" />
-    </list>
+    <list default="true" id="e9987a6a-f451-4fd0-82fb-a7a309b38bd1" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -33,7 +15,7 @@
     <session id="1606139351">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="17" />
+          <entry key="project.closed" value="18" />
           <entry key="project.open.time.0" value="4" />
           <entry key="project.open.time.1" value="8" />
           <entry key="project.open.time.10" value="1" />
@@ -310,10 +292,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-271" />
-    <option name="y" value="-1177" />
+    <option name="y" value="23" />
     <option name="width" value="1408" />
-    <option name="height" value="1177" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -426,15 +407,16 @@
       <workItem from="1544133800573" duration="3695000" />
       <workItem from="1544143613656" duration="6172000" />
       <workItem from="1544330232616" duration="3948000" />
-      <workItem from="1544576339313" duration="14131000" />
+      <workItem from="1544576339313" duration="14835000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188276000" />
+    <option name="totallyTimeSpent" value="188980000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-271" y="-1177" width="1408" height="1177" extended-state="0" />
+    <frame x="0" y="23" width="1408" height="877" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27672035" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -451,7 +433,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3299363" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.3299363" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.24147466" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.24147466" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
